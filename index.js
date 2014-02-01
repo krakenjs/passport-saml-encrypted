@@ -1,1 +1,1 @@
-exports.Strategy = require('./strategy');
+exports.Strategy = require('./lib/strategy');
