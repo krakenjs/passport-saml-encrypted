@@ -1,0 +1,34 @@
+{
+  "name": "passport-saml-encrypted",
+  "version": "0.0.1",
+  "description": "A Passport strategy for handling encrypted SAML authentication responses",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lmarkus/passport-saml-encrypted"
+  },
+  "keywords": [
+    "passport",
+    "saml",
+    "saml2.0",
+    "encryption",
+    "authentication",
+    "sso"
+  ],
+  "author": "@LennyMarkus",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/lmarkus/passport-saml-encrypted/issues"
+  },
+  "dependencies": {
+    "passport": "~0.2.0",
+    "xml2js": "~0.4.1",
+    "xml-crypto": "0.0.22",
+    "xmldom": "~0.1.19",
+    "xml-encryption": "~0.3.4",
+    "xpath": "0.0.5"
+  }
+}
