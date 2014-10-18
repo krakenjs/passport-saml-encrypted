@@ -8,6 +8,21 @@ Which seems to be dormant.
 
 It was created to support encrypted SAML responses.
 
+### Returned data object:
+**Note**: If there is a single value for an attribute, it will be a string. If there are multiple values, it will be an array. E.G.:
+
+```json
+{ issuer: 'https://fedpocv1.corp.company.com',
+  nameID: 'g2IpU4vJ53211ila09gh8wUtzgm',
+  nameIDFormat: 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+  Email: ' lmarkus@company.com',
+  Corpid: 'lmarkus',
+  FirstName: 'Lenny',
+  LastName: 'Markus',
+  ROLE_NAME: [ 'R_DEFAULT_ADMINISTRATION_ROLE', 'V_V_OPERATIONS' ] }
+```
+
+
 Contributions welcome.
 
 
