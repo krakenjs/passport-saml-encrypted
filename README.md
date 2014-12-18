@@ -36,7 +36,9 @@ An example follows:
 fnAuthRequest = function(params) {
   return "<samlp:AuthnRequest xmlns:samlp=\"urn:oasis:names:tc:SAML:2.0:protocol\" ID=\"" + params.id 
     + "\" Version=\"2.0\" IssueInstant=\"" + params.instant 
-    + "\" ProtocolBinding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST\" Destination=\"" + params.options.entryPoint + "\">" + "<saml:Issuer xmlns:saml=\"urn:oasis:names:tc:SAML:2.0:assertion\">" + params.options.issuer + "</saml:Issuer>\n";
+    + "\" ProtocolBinding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST\" Destination=\"" 
+    + params.options.entryPoint + "\">" + "<saml:Issuer xmlns:saml=\"urn:oasis:names:tc:SAML:2.0:assertion\">" 
+    + params.options.issuer + "</saml:Issuer>\n</samlp:AuthnRequest>\n";
 }
 
 fnLogoutRequest = function(params) {
