@@ -23,28 +23,29 @@ It was created to support encrypted SAML responses.
 ```
 
 ###Custom Request Builder Callbacks
-Sometimes you need specific parameters and attributes for your authorization and logout requests. Using the following configuration keys, you can supply a function that returns a string that is the request xml.  For example,
+Sometimes you need specific parameters and attributes for your authorization and logout requests. Using the following configuration keys, you can supply a function that returns a string that is the request xml.  The params function parameter to the callback contains:
+
+* id - A unique id created for this request
+* instant - The instant time for this request
+* req - The request object.
+* options - The options you passed to SamlStrategy
+
+An example follows:
 
 ```javascript
 fnAuthRequest = function(params) {
-  return "<samlp:AuthnRequest xmlns:samlp=\"urn:oasis:names:tc:SAML:2.0:protocol\" ID=\"" + id + "\" Version=\"2.0\" IssueInstant=\"" + instant +
-     "\" ProtocolBinding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST\" AssertionConsumerServiceURL=\"" + callbackUrl + "\" Destination=\"" +
-     this.options.entryPoint + "\">" +
-      "<saml:Issuer xmlns:saml=\"urn:oasis:names:tc:SAML:2.0:assertion\">" + this.options.issuer + "</saml:Issuer>\n";
-
-    if (this.options.identifierFormat) {
-      request += "<samlp:NameIDPolicy xmlns:samlp=\"urn:oasis:names:tc:SAML:2.0:protocol\" Format=\"" + this.options.identifierFormat +
-      "\" AllowCreate=\"true\"></samlp:NameIDPolicy>\n";
-    }
+  return "<samlp:AuthnRequest xmlns:samlp=\"urn:oasis:names:tc:SAML:2.0:protocol\" ID=\"" + params.id 
+    + "\" Version=\"2.0\" IssueInstant=\"" + params.instant 
+    + "\" ProtocolBinding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST\" Destination=\"" + params.options.entryPoint + "\">" + "<saml:Issuer xmlns:saml=\"urn:oasis:names:tc:SAML:2.0:assertion\">" + params.options.issuer + "</saml:Issuer>\n";
 }
 
 fnLogoutRequest = function(params) {
-  return "<samlp:LogoutRequest xmlns:samlp=\"urn:oasis:names:tc:SAML:2.0:protocol\" "+
-      "xmlns:saml=\"urn:oasis:names:tc:SAML:2.0:assertion\" ID=\""+id+"\" Version=\"2.0\" IssueInstant=\""+instant+
-      "\" Destination=\""+this.options.entryPoint + "\">" +
-      "<saml:Issuer xmlns:saml=\"urn:oasis:names:tc:SAML:2.0:assertion\">" + params.options.issuer + "</saml:Issuer>"+
-      "<saml:NameID Format=\""+req.user.nameIDFormat+"\">"+params.req.user.nameID+"</saml:NameID>"+
-      "</samlp:LogoutRequest>";
+  return "<samlp:LogoutRequest xmlns:samlp=\"urn:oasis:names:tc:SAML:2.0:protocol\" "
+    + "xmlns:saml=\"urn:oasis:names:tc:SAML:2.0:assertion\" ID=\"" + params.id + "\" Version=\"2.0\" IssueInstant=\""
+    + params.instant + "\" Destination=\"" + params.options.entryPoint + "\">"
+    + "<saml:Issuer xmlns:saml=\"urn:oasis:names:tc:SAML:2.0:assertion\">" + params.options.issuer + "</saml:Issuer>"
+    + "<saml:NameID Format=\"" + params.req.user.nameIDFormat + "\">" + params.req.user.nameID + "</saml:NameID>"
+    + "</samlp:LogoutRequest>";
 }
 passport.use(new SamlStrategy(
   {
@@ -54,8 +55,7 @@ passport.use(new SamlStrategy(
     customBuildAuthorizeRequestCallback:fnAuthRequest
     customBuildLogoutRequestCallback:fnLogoutRequest
   }, fnSamlDone)
-
-{ customBuildAuthorizeRequestCallback: }
+```
 
 Contributions welcome.
 
