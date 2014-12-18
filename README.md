@@ -23,7 +23,7 @@ It was created to support encrypted SAML responses.
 ```
 
 ###Custom Request Builder Callbacks
-Sometimes you need specific parameters and attributes for your authorization and logout requests. Using the following configuration keys, you can supply a function that returns a string that is the request xml.  The params function parameter to the callback contains:
+Sometimes you need specific parameters and attributes for your authorization and logout requests. Using the following configuration keys, you can supply a function that returns a string that is the request xml.  The `params` function parameter to the callback contains:
 
 * id - A unique id created for this request
 * instant - The instant time for this request
