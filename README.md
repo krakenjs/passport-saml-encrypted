@@ -22,6 +22,40 @@ It was created to support encrypted SAML responses.
   ROLE_NAME: [ 'R_DEFAULT_ADMINISTRATION_ROLE', 'V_V_OPERATIONS' ] }
 ```
 
+###Custom Request Builder Callbacks
+Sometimes you need specific parameters and attributes for your authorization and logout requests. Using the following configuration keys, you can supply a function that returns a string that is the request xml.  For example,
+
+```javascript
+fnAuthRequest = function(params) {
+  return "<samlp:AuthnRequest xmlns:samlp=\"urn:oasis:names:tc:SAML:2.0:protocol\" ID=\"" + id + "\" Version=\"2.0\" IssueInstant=\"" + instant +
+     "\" ProtocolBinding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST\" AssertionConsumerServiceURL=\"" + callbackUrl + "\" Destination=\"" +
+     this.options.entryPoint + "\">" +
+      "<saml:Issuer xmlns:saml=\"urn:oasis:names:tc:SAML:2.0:assertion\">" + this.options.issuer + "</saml:Issuer>\n";
+
+    if (this.options.identifierFormat) {
+      request += "<samlp:NameIDPolicy xmlns:samlp=\"urn:oasis:names:tc:SAML:2.0:protocol\" Format=\"" + this.options.identifierFormat +
+      "\" AllowCreate=\"true\"></samlp:NameIDPolicy>\n";
+    }
+}
+
+fnLogoutRequest = function(params) {
+  return "<samlp:LogoutRequest xmlns:samlp=\"urn:oasis:names:tc:SAML:2.0:protocol\" "+
+      "xmlns:saml=\"urn:oasis:names:tc:SAML:2.0:assertion\" ID=\""+id+"\" Version=\"2.0\" IssueInstant=\""+instant+
+      "\" Destination=\""+this.options.entryPoint + "\">" +
+      "<saml:Issuer xmlns:saml=\"urn:oasis:names:tc:SAML:2.0:assertion\">" + params.options.issuer + "</saml:Issuer>"+
+      "<saml:NameID Format=\""+req.user.nameIDFormat+"\">"+params.req.user.nameID+"</saml:NameID>"+
+      "</samlp:LogoutRequest>";
+}
+passport.use(new SamlStrategy(
+  {
+    path: '/login/callback',
+    entryPoint: 'https://openidp.feide.no/simplesaml/saml2/idp/SSOService.php',
+    issuer: 'passport-saml'
+    customBuildAuthorizeRequestCallback:fnAuthRequest
+    customBuildLogoutRequestCallback:fnLogoutRequest
+  }, fnSamlDone)
+
+{ customBuildAuthorizeRequestCallback: }
 
 Contributions welcome.
 
