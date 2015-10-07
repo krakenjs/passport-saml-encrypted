@@ -24,11 +24,13 @@
     "url": "https://github.com/lmarkus/passport-saml-encrypted/issues"
   },
   "dependencies": {
-    "passport": "~0.2.0",
+    "passport-strategy": "*",
     "xml2js": "~0.4.1",
     "xml-crypto": "0.0.22",
     "xmldom": "~0.1.19",
     "xml-encryption": "~0.7.2",
-    "xpath": "0.0.5"
+    "xpath": "0.0.5",
+    "sinon": "^1.10.2",
+    "passport: "0.3.x"
   }
 }
