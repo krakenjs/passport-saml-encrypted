@@ -31,6 +31,6 @@
     "xml-encryption": "~0.7.2",
     "xpath": "0.0.5",
     "sinon": "^1.10.2",
-    "passport: "0.3.x"
+    "passport: "^0.3.0"
   }
 }
