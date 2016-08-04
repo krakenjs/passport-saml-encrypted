@@ -1,3 +1,7 @@
+**NOTE**
+Not under active developement, but I will accept PR's
+********
+
 passport-saml-encrypted
 =======================
 
