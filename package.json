@@ -26,7 +26,7 @@
   "dependencies": {
     "passport-strategy": "*",
     "xml2js": "~0.4.1",
-    "xml-crypto": "0.0.22",
+    "xml-crypto": "git+ssh://git@git@github.com/jonfairbanks/xml-crypto.git",
     "xmldom": "~0.1.19",
     "xml-encryption": "~0.7.2",
     "xpath": "0.0.5",
