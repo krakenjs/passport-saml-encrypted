@@ -1,6 +1,6 @@
 {
   "name": "passport-saml-encrypted-entrinsik",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A Passport strategy for handling encrypted SAML authentication responses",
   "main": "index.js",
   "scripts": {
