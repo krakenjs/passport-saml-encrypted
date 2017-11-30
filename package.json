@@ -1,6 +1,6 @@
 {
-  "name": "passport-saml-encrypted",
-  "version": "0.1.7",
+  "name": "passport-saml-encrypted-entrinsik",
+  "version": "0.0.13",
   "description": "A Passport strategy for handling encrypted SAML authentication responses",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lmarkus/passport-saml-encrypted"
+    "url": "https://github.com/derek-oneill/passport-saml-encrypted"
   },
   "keywords": [
     "passport",
@@ -18,15 +18,19 @@
     "authentication",
     "sso"
   ],
-  "author": "@LennyMarkus",
+  "author": "@derek-oneill",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/lmarkus/passport-saml-encrypted/issues"
+    "url": "https://github.com/derek-oneill/passport-saml-encrypted/issues"
+  },
+  "publishConfig": {
+    "registry": "http://docker.entrinsik.com:8081/repository/entNPM"
   },
   "dependencies": {
     "passport-strategy": "*",
     "xml2js": "~0.4.1",
     "xml-crypto": "0.8.4",
+    "xmlbuilder": "^8.2.2",
     "xmldom": "~0.1.19",
     "xml-encryption": "~0.7.2",
     "xpath": "0.0.5",
