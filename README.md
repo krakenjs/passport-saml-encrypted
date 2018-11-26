@@ -1,5 +1,5 @@
 **NOTE**
-Not under active developement, but I will accept PR's
+Not under active developement. Feel free to fork.
 ********
 
 passport-saml-encrypted
