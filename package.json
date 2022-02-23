@@ -26,10 +26,10 @@
   "dependencies": {
     "passport-strategy": "*",
     "xml2js": "~0.4.1",
-    "xml-crypto": "0.8.4",
-    "xmldom": "~0.1.19",
-    "xml-encryption": "~1.2.4",
-    "xpath": "0.0.5",
-    "passport": "^0.3.x"
+    "xml-crypto": "^2.1.3",
+    "xmldom": "~0.6.0",
+    "xml-encryption": "^2.0.0",
+    "xpath": "0.0.32",
+    "passport": "^0"
   }
 }
