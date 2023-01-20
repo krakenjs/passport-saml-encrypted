@@ -27,7 +27,7 @@
     "passport-strategy": "*",
     "xml2js": "~0.4.1",
     "xml-crypto": "^2.1.3",
-    "xmldom": "~0.6.0",
+    "@xmldom/xmldom": "~0.8.6",
     "xml-encryption": "^2.0.0",
     "xpath": "0.0.32",
     "passport": "^0"
